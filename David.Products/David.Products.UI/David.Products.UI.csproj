@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -131,6 +132,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -162,6 +164,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="WebAppSettings.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -179,6 +183,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\David.Products.Common\David.Products.Common.csproj">
+      <Project>{da517d49-551c-4c61-af7d-80a185ec9c75}</Project>
+      <Name>David.Products.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\David.Products.Domain\David.Products.Domain.csproj">
+      <Project>{1bb9eab7-d606-45d0-bbde-9bd442dce4f0}</Project>
+      <Name>David.Products.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\David.Products.UI.BusinessLayer\David.Products.UI.BusinessLayer.csproj">
+      <Project>{2b4610a6-9a64-4d8e-adcd-1974d58a9fd3}</Project>
+      <Name>David.Products.UI.BusinessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

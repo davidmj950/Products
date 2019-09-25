@@ -1,4 +1,5 @@
 ﻿using David.Products.Domain.Models.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +16,9 @@ namespace David.Products.Domain.Models
         [MaxLength(30, ErrorMessage = "El campo {0}, debe tener una longitud máxima de {1} caractéres")]
         public string Name { get; set; }
         #region Virtuals
+        [JsonIgnore]
         public virtual ICollection<User> Users { get; set; }
+        [JsonProperty("ClaimActions")]
         public virtual ICollection<ClaimAction> ClaimActions { get; set; }
         #endregion
         public DateTime LastUpdate { get; set; }

@@ -15,8 +15,9 @@ namespace David.Products.Domain.Models
         public string Name { get; set; }
         public int RoleId { get; set; }
         #region Virtuals
-        [JsonProperty("Role")]
+        [JsonIgnore]
         public virtual Role Role { get; set; }
+        [JsonProperty("ClaimTypes")]
         public virtual ICollection<ClaimType> ClaimTypes { get; set; }
         #endregion
         public DateTime LastUpdate { get; set; }

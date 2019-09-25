@@ -1,4 +1,5 @@
 ﻿using David.Products.Domain.Models.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -37,6 +38,7 @@ namespace David.Products.Domain.Models
         [Required(ErrorMessage = "El campo {0}, es requerido")]
         public int RoleId { get; set; }
         #region Virtuals
+        [JsonProperty("Role")]
         public virtual Role Role { get; set; } 
         #endregion
         public DateTime LastUpdate { get; set; }
