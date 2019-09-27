@@ -33,18 +33,16 @@ namespace David.Products.UI.BusinessLayer.Business
                     if (response.Result != null)
                     {
                         response.IsSuccess = true;
-                        //message = $"ShowMask('Se ha enviado un correo de recuperación a su correo electronico registrado')";
-                        response.Message = new System.Collections.Generic.List<MessageResult> { new MessageResult { Message = message } };
                     }
                     else
                     {
-                        message = $"ShowError('El correo electrónico no cuenta con un usuario registrado en el sistema')";
+                        message = $"ShowError('{string.Format(ManagmentHelper.GetKey("User.Login.Invalid"))}');";
                         response.Message = new System.Collections.Generic.List<MessageResult> { new MessageResult { Message = message } };
                     }
                 }
                 else
                 {
-                    message = $"ShowError('{string.Format(ManagmentHelper.GetKey("User.ValidateEmail.Load.Message.Error"), randomNumber)}')";
+                    message = $"ShowError('{string.Format(ManagmentHelper.GetKey("User.Login.Invalid"), randomNumber)}');";
                     response.Message = new System.Collections.Generic.List<MessageResult> { new MessageResult { Message = message } };
 
                     ExceptionLogging.LogException(
@@ -57,7 +55,7 @@ namespace David.Products.UI.BusinessLayer.Business
             }
             else
             {
-                message = $"ShowError('{string.Format(ManagmentHelper.GetKey("User.ValidateEmail.Load.Message.Error"), randomNumber)}')";
+                message = $"ShowError('{string.Format(ManagmentHelper.GetKey("User.Login.Message.Error"), randomNumber)}');";
 
                 response.Message = new System.Collections.Generic.List<MessageResult> { new MessageResult { Message = message } };
 

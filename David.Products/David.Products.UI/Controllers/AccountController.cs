@@ -18,7 +18,7 @@ namespace David.Products.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(UserLoginRequest model)
+        public ActionResult Index(UserLoginRequest model)
         {
             if (ModelState.IsValid)
             {
@@ -40,7 +40,13 @@ namespace David.Products.UI.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return RedirectToAction("Index", "Account");
+            //return RedirectToAction("Index", "Account", new { ViewBag.ScriptUp } );
+            return View("Index");
+        }
+
+        public ActionResult Register()
+        {
+            return View();
         }
     }
 }
