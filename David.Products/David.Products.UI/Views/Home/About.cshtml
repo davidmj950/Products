@@ -1,5 +1,12 @@
-﻿@{
+﻿@using David.Products.UI.BusinessLayer.Helpers
+
+@{
     ViewBag.Title = "About";
+}
+
+@if (HttpContext.Current.Session["Name"] == null)
+{
+    Response.Redirect("/Account/Index", true);
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>

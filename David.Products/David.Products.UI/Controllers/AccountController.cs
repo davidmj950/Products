@@ -46,6 +46,7 @@ namespace David.Products.UI.Controllers
 
         public ActionResult Register()
         {
+
             return View();
         }
     }

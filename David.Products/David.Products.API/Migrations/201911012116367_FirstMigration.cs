@@ -1,4 +1,4 @@
-﻿namespace David.Products.API.Migrations
+namespace David.Products.API.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

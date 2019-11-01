@@ -1,4 +1,4 @@
-﻿namespace David.Products.API.Migrations
+namespace David.Products.API.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -9,14 +9,14 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(David.Products.API.Models.DataContextLocal context)
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
         }
     }
