@@ -3,9 +3,13 @@ using David.Products.Common.Diagnostics;
 using David.Products.Common.Helpers;
 using David.Products.Common.Models;
 using David.Products.Domain.Models;
+using Newtonsoft.Json;
 using System;
+using System.Configuration;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -62,6 +66,36 @@ namespace David.Products.API.Controllers
                 response.Message.Add(new MessageResult { Message = ex.Message });
                 return Ok(response);
             }
+        }
+
+        [HttpPost]
+        //[Route("captcha")]
+        public bool Captcha(string token)
+        {
+            bool isHuman = true;
+
+            try
+            {
+                string secretKey = ConfigurationManager.AppSettings["reCaptchaPrivateKey"];
+                Uri uri = new Uri("https://www.google.com/recaptcha/api/siteverify" +
+                                  $"?secret={secretKey}&response={token}");
+                HttpWebRequest request = WebRequest.CreateHttp(uri);
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = 0;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream responseStream = response.GetResponseStream();
+                StreamReader streamReader = new StreamReader(responseStream);
+                string result = streamReader.ReadToEnd();
+                ReCaptchaResponse reCaptchaResponse = JsonConvert.DeserializeObject<ReCaptchaResponse>(result);
+                isHuman = reCaptchaResponse.Success;
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("reCaptcha error: " + ex);
+            }
+
+            return isHuman;
         }
     }
 }
