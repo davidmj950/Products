@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Configuration;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace David.Products.API
 {
@@ -10,7 +12,10 @@ namespace David.Products.API
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web
-
+            string origins = WebConfigurationManager.AppSettings["Cors.AllowableOrigins"];
+            var cors = new EnableCorsAttribute((!string.IsNullOrEmpty(origins) ? origins : "*"), "*", "*");
+            config.EnableCors(cors);
+            config.Filters.Add(new CustomAttributes.CustomExceptionFilterAttribute());
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 
@@ -19,6 +24,10 @@ namespace David.Products.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }

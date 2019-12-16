@@ -8,6 +8,7 @@ using System;
 using System.Configuration;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
@@ -16,11 +17,12 @@ using System.Web.Http.Description;
 namespace David.Products.API.Controllers
 {
     //[Route("api/[Controller]")]
+    [Authorize]
     public class UserController : ApiController
     {
         private DataContextLocal context = new DataContextLocal();
 
-        //[Route("api/Login")]
+        [Route("users/Login")]
         [HttpPost]
         [ResponseType(typeof(Response<User>))]
         public IHttpActionResult Login(UserLoginRequest model)
@@ -45,7 +47,10 @@ namespace David.Products.API.Controllers
                             response.Result = myUser;
                             response.IsSuccess = true;
                         }
-                        else
+                        else if (true)
+                        {
+                            response.Message.Add(new MessageResult { Message = "Debe de resolver el captcha" });
+                        }
                         {
                             response.Message.Add(new MessageResult { Message = "Usuario y/o contraseña no válido" });
                         }
@@ -69,10 +74,10 @@ namespace David.Products.API.Controllers
         }
 
         [HttpPost]
-        //[Route("captcha")]
+        [Route("users/Captcha")]
         public bool Captcha(string token)
         {
-            bool isHuman = true;
+            bool isHuman = false;
 
             try
             {

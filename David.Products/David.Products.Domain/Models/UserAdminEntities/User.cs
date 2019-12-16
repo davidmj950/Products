@@ -37,6 +37,8 @@ namespace David.Products.Domain.Models
         public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "El campo {0}, es requerido")]
         public int RoleId { get; set; }
+        [Display(Name = "Número de intentos")]
+        public int NumberOfAttemps { get; set; }
         #region Virtuals
         [JsonProperty("Role")]
         public virtual Role Role { get; set; } 

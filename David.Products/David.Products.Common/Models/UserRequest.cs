@@ -13,5 +13,8 @@ namespace David.Products.Common.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "El campo: Contraseña es Requerido.")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Debe de resolver el recaptcha")]
+        public string Recaptcha { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace David.Products.API.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(David.Products.API.Models.DataContextLocal context)

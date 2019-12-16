@@ -32,5 +32,7 @@ namespace David.Products.Domain
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Custumers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Audience> Audiences { get; set; }
+        public virtual DbSet<Parameter> Parameters { get; set; }
     }
 }

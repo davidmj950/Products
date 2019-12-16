@@ -52,7 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Constants.cs" />
+    <Compile Include="CustomExtensions\StringExtensions.cs" />
     <Compile Include="Diagnostics\ExceptionLogging.cs" />
+    <Compile Include="Enums\Parameters.cs" />
     <Compile Include="Helpers\ApiService.cs" />
     <Compile Include="Helpers\ResponseHelper.cs" />
     <Compile Include="Helpers\Utility.cs" />

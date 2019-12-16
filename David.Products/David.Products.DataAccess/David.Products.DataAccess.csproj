@@ -5,16 +5,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1BB9EAB7-D606-45D0-BBDE-9BD442DCE4F0}</ProjectGuid>
+    <ProjectGuid>{BBC0FA25-83C9-4C5B-9ADF-1C9ECD4834FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>David.Products.Domain</RootNamespace>
-    <AssemblyName>David.Products.Domain</AssemblyName>
+    <RootNamespace>David.Products.DataAccess</RootNamespace>
+    <AssemblyName>David.Products.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,9 +41,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,22 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDataContext.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Interfaces\IEntity.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\SystemEntities\Audience.cs" />
-    <Compile Include="Models\SystemEntities\City.cs" />
-    <Compile Include="Models\SystemEntities\Department.cs" />
-    <Compile Include="Models\SystemEntities\Gender.cs" />
-    <Compile Include="Models\SystemEntities\MaritalStatus.cs" />
-    <Compile Include="Models\SystemEntities\Parameter.cs" />
-    <Compile Include="Models\UserAdminEntities\ClaimAction.cs" />
-    <Compile Include="Models\UserAdminEntities\ClaimType.cs" />
-    <Compile Include="Models\UserAdminEntities\Role.cs" />
-    <Compile Include="Models\UserAdminEntities\User.cs" />
+    <Compile Include="DAO\DaoAudience.cs" />
+    <Compile Include="Interfaces\IAudience.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\David.Products.Domain\David.Products.Domain.csproj">
+      <Project>{1BB9EAB7-D606-45D0-BBDE-9BD442DCE4F0}</Project>
+      <Name>David.Products.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

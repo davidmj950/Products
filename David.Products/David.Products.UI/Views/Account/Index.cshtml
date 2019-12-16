@@ -53,6 +53,13 @@
                             @Html.PasswordFor(m => m.Password, new { @type = "password", @Class = "form-control", @placeholder = "Password" })
                             @*<input type="password" class="form-control" placeholder="password">*@
                         </div>
+                        <div class="input-group form-group">
+                            @*<div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>*@
+                            <div class="g-recaptcha" data-sitekey="6LdO4ccUAAAAAOW-Jl6aWVbf92S_XDpQuDX-almf"></div>
+                            @*<input type="password" class="form-control" placeholder="password">*@
+                        </div>
                         <div class="row align-items-center remember">
                             <input type="checkbox">Remember Me
                         </div>
@@ -88,6 +95,7 @@
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $(document).ready(function () {
             @Html.Raw(ViewBag.ScriptUp)

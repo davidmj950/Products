@@ -19,7 +19,7 @@ namespace David.Products.API.Controllers
         /// <returns></returns>
         [HttpPost]
         [ResponseType(typeof(bool))]
-        public IHttpActionResult validateCaptcha(string user, string userId)
+        public IHttpActionResult ValidateCaptcha(string user, string userId)
         {
             if (ModelState.IsValid)
             {
