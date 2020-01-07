@@ -59,6 +59,7 @@
     <Compile Include="Helpers\ApiService.cs" />
     <Compile Include="Helpers\ResponseHelper.cs" />
     <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="Models\PaginatorViewModel.cs" />
     <Compile Include="Models\ReCaptchaResponse.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\UserRequest.cs" />

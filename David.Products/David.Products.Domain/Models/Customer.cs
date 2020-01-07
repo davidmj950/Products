@@ -13,7 +13,7 @@ namespace David.Products.Domain.Models
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(50, ErrorMessage = "El campo {0}, debe tener una longitud máxima de {1} caractéres")]
         [Display(Name = "Nombres")]
-        public string FisrtName { get; set; }
+        public string FirstName { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [Display(Name = "Apellidos")]
         [MaxLength(50, ErrorMessage = "El campo {0}, debe tener una longitud máxima de {1} caractéres")]
@@ -40,12 +40,13 @@ namespace David.Products.Domain.Models
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [MaxLength(100, ErrorMessage = "El campo {0}, debe tener una longitud máxima de {1} caractéres")]
         [Display(Name = "Barrio")]
-        public string Neighboorhood { get; set; }
+        public string Neighborhood { get; set; }
         public DateTime DateOfRegistration { get; set; }
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [Display(Name = "Autorización de Habeas data")]
         public bool AuthorizationHabeasData { get; set; }
         [Required]
+        [Display(Name = "Marital Status")]
         public int MaritalStatusId { get; set; }
         [Required]
         public int GenderId { get; set; }

@@ -1,4 +1,5 @@
-﻿using David.Products.Domain.Models;
+﻿using David.Products.Common.Models;
+using David.Products.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,12 @@ namespace David.Products.Business.Interfaces
         /// <returns></returns>
         /// <author>Jose David Morales</author>
         User GetUserByLogin(string usernamme, out HttpResponseMessage responseMessage);
+
+        /// <summary>
+        /// get a list of marital status
+        /// </summary>
+        /// <returns></returns>
+        Response<List<MaritalStatus>> GetmaritalStatusList();
 
         /// <summary>
         /// Autenticate user credecials
@@ -41,5 +48,12 @@ namespace David.Products.Business.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         bool SaveAuditLoginUser(int id);
+
+        /// <summary>
+        /// Is user active
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        bool UserIsActive(string username);
     }
 }

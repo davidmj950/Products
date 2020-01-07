@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DaoAudience.cs" />
+    <Compile Include="DAO\DaoUser.cs" />
     <Compile Include="Interfaces\IAudience.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

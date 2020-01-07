@@ -19,14 +19,24 @@ namespace David.Products.DataAccess.DAO
         }
         public Audience GetAudienceByClientId(string clientId)
         {
-            return (from audience in context.Audiences
-                    where audience.ClientId == clientId
-                    select audience).First();
+            Audience aud = null;
+            using (context)
+            {
+                aud = (from audience in context.Audiences
+                       where audience.ClientId.Contains(clientId) && audience.Active
+                       select audience).FirstOrDefault();
+            }
+            return aud;
         }
 
         public List<Audience> GetAudiences()
         {
-            return (from audience in context.Audiences select audience).ToList();
+            List<Audience> audiences = null;
+            using (context)
+            {
+                audiences = (from audience in context.Audiences select audience).ToList();
+            }
+                return audiences;
         }
     }
 }

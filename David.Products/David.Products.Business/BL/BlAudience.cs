@@ -26,7 +26,7 @@ namespace David.Products.Business.BL
 
         public List<Audience> GetAudiences()
         {
-            throw new NotImplementedException();
+            return daoAudience.GetAudiences();
         }
     }
 }

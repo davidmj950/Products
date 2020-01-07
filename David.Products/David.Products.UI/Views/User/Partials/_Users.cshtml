@@ -1,0 +1,39 @@
+﻿@model David.Products.Common.Models.PaginatorViewModel<David.Products.Domain.Models.User>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.QueryResult == null || Model.QueryResult.Results.Count <= 0)
+            {
+                <tr>
+                    <td colspan="5">There is not data available.</td>
+                </tr>
+            }
+        }
+        @foreach (var item in Model.QueryResult.Results)
+        {
+            <tr>
+                <td>@item.FisrtName</td>
+                <td>@item.LastName</td>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Active</td>
+                <td>
+                    <a class="btn btn-danger" href="@Url.Action("Edit", "User", new { id = item.Id })">Modify</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

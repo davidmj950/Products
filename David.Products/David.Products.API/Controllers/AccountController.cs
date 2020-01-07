@@ -26,14 +26,7 @@ namespace David.Products.API.Controllers
                 SimpleCaptcha captchaCode = new SimpleCaptcha();
 
                 bool isHuman = captchaCode.Validate(user, userId);
-                if (isHuman)
-                {
-                    return Ok();
-                }
-                else
-                {
-                    return BadRequest();
-                }
+                return Ok(isHuman);
             }
             else
             {

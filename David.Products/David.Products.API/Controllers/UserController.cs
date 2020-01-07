@@ -17,12 +17,12 @@ using System.Web.Http.Description;
 namespace David.Products.API.Controllers
 {
     //[Route("api/[Controller]")]
-    [Authorize]
+    //[Authorize]
     public class UserController : ApiController
     {
         private DataContextLocal context = new DataContextLocal();
 
-        [Route("users/Login")]
+        [Route("api/User/Login")]
         [HttpPost]
         [ResponseType(typeof(Response<User>))]
         public IHttpActionResult Login(UserLoginRequest model)
@@ -47,10 +47,7 @@ namespace David.Products.API.Controllers
                             response.Result = myUser;
                             response.IsSuccess = true;
                         }
-                        else if (true)
-                        {
-                            response.Message.Add(new MessageResult { Message = "Debe de resolver el captcha" });
-                        }
+                        else
                         {
                             response.Message.Add(new MessageResult { Message = "Usuario y/o contraseña no válido" });
                         }
@@ -73,12 +70,16 @@ namespace David.Products.API.Controllers
             }
         }
 
+        [Route("api/Users/Recaptcha")]
         [HttpPost]
-        [Route("users/Captcha")]
-        public bool Captcha(string token)
+        [ResponseType(typeof(Response<bool>))]
+        public IHttpActionResult ValidateRecaptcha([FromBody]string token)
         {
+            Response<bool> response = new Response<bool>
+            {
+                IsSuccess = false
+            };
             bool isHuman = false;
-
             try
             {
                 string secretKey = ConfigurationManager.AppSettings["reCaptchaPrivateKey"];
@@ -88,19 +89,23 @@ namespace David.Products.API.Controllers
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = 0;
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream responseStream = response.GetResponseStream();
+                HttpWebResponse recaptchaResponse = (HttpWebResponse)request.GetResponse();
+                Stream responseStream = recaptchaResponse.GetResponseStream();
                 StreamReader streamReader = new StreamReader(responseStream);
                 string result = streamReader.ReadToEnd();
                 ReCaptchaResponse reCaptchaResponse = JsonConvert.DeserializeObject<ReCaptchaResponse>(result);
                 isHuman = reCaptchaResponse.Success;
+                response.IsSuccess = true;
+                response.Result = isHuman;
             }
             catch (Exception ex)
             {
-                Trace.WriteLine("reCaptcha error: " + ex);
+                response.Message.Add(new MessageResult
+                {
+                    Message = ex.Message
+                });
             }
-
-            return isHuman;
+            return Ok(response);
         }
     }
 }

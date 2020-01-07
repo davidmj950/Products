@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Actividad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "User")">Users management</a></li>
+    </ol>
+</nav>
+<div class="container">
+    <h3>
+        Users
+        <small class="text-muted">to search, add or edit an user in the app</small>
+    </h3>
+    <div class="active-pink-3 active-pink-4 mb-4">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+</div>
+@{ 
+    Html.RenderAction("_Users", "User");
+}

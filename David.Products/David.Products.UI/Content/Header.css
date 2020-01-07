@@ -1,0 +1,19 @@
+﻿:root {
+    --MainFont: 'Roboto' !important;
+    --color: #66FF00;
+}
+
+body{
+    font-family: var(--MainFont);
+    font-size:18px;
+}
+
+.bg-green {
+    background-color: var(--color);
+    color: white !important;
+}
+
+.navbar-brand span{
+    font-size: 25px;
+    color: ghostwhite;
+}

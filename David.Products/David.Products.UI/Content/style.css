@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Numans');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
-    --MainFont : 'Lato' !important;
+    --MainFont : 'Roboto' !important;
     --color : #66FF00;
 }
 
@@ -21,7 +21,7 @@ html,body{
 }
 
 .card{
-    height: 370px;
+    /*height: 370px;*/
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
